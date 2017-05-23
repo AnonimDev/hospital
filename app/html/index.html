@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Start META -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="Задача на ООП" />
+    <meta name="description" content="Задача на ООП" />
+    <!-- TITLE -->
+    <title>Задача на ООП</title>
+
+    <!-- Start Sheets CSS -->
+    <link href="./app/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container" style="height: 100vh;">
+    <div id="wrap">
+        <div id="menu">
+            <div class="menu">
+                <ul>
+                    <li><a href="<?php echo HOST; ?>?mode=v1">Добавить в базу</a></li>
+                </ul>
+                <ul>
+                    <li><a href="<?php echo HOST; ?>?mode=v2">Вывести в файл</a></li>
+                </ul>
+                <ul>
+                    <li><a href="<?php echo HOST; ?>?mode=v3">Вывести часы работы</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <?php echo $content; ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+		

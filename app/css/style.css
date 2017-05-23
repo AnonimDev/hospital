@@ -1,0 +1,90 @@
+.container{
+    display:flex;
+    justify-content:center;
+}
+#wrap {
+    /*width: 800px;*/
+    /*height:100%;*/
+    margin:auto;
+    /*outline:1px solid red;*/
+    /*display:block;*/
+}
+
+#menu, #menu2{
+    width: 53%;
+    margin:0 auto;
+    height:40px;
+    /*outline:1px solid green;*/
+}
+
+#content {
+    width: 800px;
+    /*height:500px;*/
+    margin: 60px 0;
+    /*outline:1px solid lime;*/
+    text-align: center;
+}
+#content form{
+    display: inline-block;
+}
+
+.label{
+    float: left;
+}
+.button{
+    margin: 10px auto;
+}
+
+.menu{
+    width: 500px;
+    background-color: #333;
+    margin:0 auto;
+}
+
+.menu ul{
+    margin: 0; padding: 0;
+    float: left;
+}
+
+.menu ul li{
+    display: inline;
+}
+
+.menu ul li a{
+    float: left; text-decoration: none;
+    color: white;
+    padding: 10.5px 11px;
+    background-color: #333;
+}
+
+.menu ul li a:visited{
+    color: white;
+}
+
+.menu ul li a:hover, .menu ul li .current{
+    color: #fff;
+    background-color:#0b75b2;
+}
+
+h3{
+    color:red;
+}
+
+b{
+    color:red;
+}
+.bloc{
+    text-align: center;
+    margin: 59px 0 0 -67px;
+}
+.bloc_1{
+    display: inline-block;
+}
+.bloc_1 input{
+    width: 100px;
+    height: 30px;
+}
+.bloc_2{
+    font-size: 100px;
+    font-weight: bold;
+}

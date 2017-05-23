@@ -1,0 +1,49 @@
+<h2>Введите данные!</h2>
+<form action="" method="POST">
+    <table>
+        <tr>
+            <td class="label">Номер:</td>
+            <td><input type="text" size="30" name="number"></td>
+        </tr>
+        <tr>
+            <td class="label">Тип:</td>
+            <td><select name="type">
+                <option value=""></option>
+                <option value="1">Детская</option>
+                <option value="2">Взрослая</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Район:</td>
+            <td><input type="text" size="30" name="locality"></td>
+        </tr>
+        <tr>
+            <td class="label">Адрес:</td>
+            <td><input type="text" size="30" name="dress"></td>
+        </tr>
+        <tr>
+            <td class="label">Часы работы:</td>
+            <td><select name="time-1">
+                <option value=""></option>
+                <option value="6">6:00</option>
+                <option value="7">7:00</option>
+                <option value="8">8:00</option>
+                <option value="9">9:00</option>
+                <option value="10">10:00</option>
+            </select>
+                -
+                <select name="time-2">
+                <option value=""></option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+            </select>
+            </td>
+        </tr>
+    </table>
+    <div class="button"><input type="submit" value="Добавить" name="submit"></div>
+</form>
