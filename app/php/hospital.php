@@ -93,39 +93,66 @@ class hospital
             if($res->num_rows > 0){
                 $row = $res->fetch_assoc();
                 $number = $row['number'];
+                $locality = $row['locality'];
+                $dress = $row['address'];
                 $type = $row['type'];
                 $type = $this->db->query("SELECT * FROM `hospital_type` WHERE `id` = '$type'") or die($this->db->error);
                 $type_row = $type->fetch_assoc();
                 $type = $type_row['type'];
                 $time = $row['time'];
-                return inform::showSuccessTable($number, $type, $time, $text);
+                echo inform::showSuccessTable($number, $type, $time, $locality, $dress, $text);
             }
-            else echo inform::showErrorMessage('Больница с номером <b>'. $this->number .'</b> отсутствует в базе! ');
-        } else inform::showErrorMessage('В поле Номер могут быть только цифры');
+            else
+            {
+                echo inform::showErrorMessage('Больница с номером <b>'. $this->number .'</b> отсутствует в базе! ');;
+            }
+        }
+        else
+        {
+            echo inform::showErrorMessage('В поле Номер могут быть только цифры');
+        }
     }
+
     public function get(){
-        echo $this->out(false);
+        $this->out(false);
     }
 
     public function download()
     {
 
-        $str = $this->out(true);
-        $file = uniqid();
-        $file .= '.txt';
+        $this->type = $this->security_input($this->type);
 
-        file_put_contents($file, $str);
-        ob_end_clean();
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename=1'.$file);
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        readfile($file);
-        unlink($file);
-        exit;
+        $res = $this->db->query("SELECT * FROM `hospital_all` WHERE `type` = '$this->type' ORDER BY '$this->number' ASC") or die($this->db->error);
+        if ($res->num_rows > 0) {
+            $str = '----------------------' . "\r\n";
+            while ($row = $res->fetch_assoc()) {
+                $number = $row['number'];
+                $locality = $row['locality'];
+                $dress = $row['address'];
+                $type = $this->db->query("SELECT * FROM `hospital_type` WHERE `id` = '$this->type'") or die($this->db->error);
+                $type_row = $type->fetch_assoc();
+                $type = $type_row['type'];
+                $time = $row['time'];
+                $str .= inform::showSuccessTable($number, $type, $time, $locality, $dress, true);
+            }
+            $file = uniqid();
+            $file .= '.txt';
+            file_put_contents($file, $str);
+            ob_end_clean();
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename=1' . $file);
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            readfile($file);
+            unlink($file);
+            exit;
+        }
+        else
+        {
+            echo inform::showErrorMessage('Записи с указанными параметрами не найдены!');
+        }
     }
-
 }

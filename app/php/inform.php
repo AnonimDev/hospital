@@ -42,21 +42,26 @@ class inform
 
         return $err;
     }
-    static public function showSuccessTable($number, $type, $time, $text){
+    static public function showSuccessTable($number, $type, $time, $locality, $dress, $text){
 
         $number = htmlspecialchars($number, ENT_QUOTES);
         $type = htmlspecialchars($type, ENT_QUOTES);
         $time = htmlspecialchars($time, ENT_QUOTES);
+        $locality = htmlspecialchars($locality, ENT_QUOTES);
+        $dress = htmlspecialchars($dress, ENT_QUOTES);
         
         if($text){
             $suc = 'Номер больницы:'. $number . "\r\n";
             $suc .= 'Тип больницы:'. $type . "\r\n";
+            $suc .= 'Адрес:'. $locality . ', ' . $dress . "\r\n";
             $suc .= 'Время работы больницы:'. $time . "\r\n";
+            $suc .= '----------------------' . "\r\n";
+            
 
         }else {
             $suc = '<table align="center" border="1">' . "\n";
-            $suc .= '<tr><td>Номер больницы</td><td>Тип больницы</td><td>Часы работы</td></tr>' . "\n";
-            $suc .= '<tr><td>' . $number . '</td><td>' . $type . '</td><td>' . $time . '</td></tr>' . "\n";
+            $suc .= '<tr><td>Номер больницы</td><td>Адрес</td><td>Тип больницы</td><td>Часы работы</td></tr>' . "\n";
+            $suc .= '<tr><td>' . $number . '</td><td>'. $locality . ', ' . $dress .'</td><td>' . $type . '</td><td>' . $time . '</td></tr>' . "\n";
             $suc .= '</table>' . "\n";
         }
         return $suc;
